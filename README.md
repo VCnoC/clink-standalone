@@ -86,6 +86,108 @@ Edit `config/*.json` to customize CLI commands, args, and timeouts.
 - Python 3.9+
 - pydantic
 
+## Using as a Skill
+
+This project can be used as a **Skill** in various AI coding assistants. Below are the setup instructions for each platform.
+
+### Claude Code
+
+1. **Copy to Claude skills directory:**
+
+```bash
+cp -r clink-standalone ~/.claude/skills/clink-standalone
+```
+
+2. **Add to your project's `.claude/commands/` (optional):**
+
+Create custom slash commands that invoke clink:
+
+```bash
+# .claude/commands/gemini.md
+---
+name: gemini
+description: "Delegate a task to Gemini CLI"
+---
+python ~/.claude/skills/clink-standalone/bin/clink.py gemini "$ARGUMENTS"
+```
+
+3. **Usage in Claude Code:**
+
+```
+> Use gemini to explain Rust ownership
+> Ask codex to review src/auth.py for security issues
+```
+
+---
+
+### OpenAI Codex CLI
+
+1. **Add to your Codex instructions directory:**
+
+```bash
+cp -r clink-standalone ~/.codex/skills/clink-standalone
+```
+
+2. **Reference in your `codex.md` or instructions file:**
+
+```markdown
+# External CLI Tools
+
+You can delegate tasks to external AI CLIs using the clink bridge:
+
+- Gemini: `python ~/.codex/skills/clink-standalone/bin/clink.py gemini "<prompt>"`
+- Claude: `python ~/.codex/skills/clink-standalone/bin/clink.py claude "<prompt>"`
+```
+
+3. **Usage in Codex:**
+
+```
+> Run gemini to search for the latest Python 3.13 features
+```
+
+---
+
+### Gemini CLI / Gemini Code Assist
+
+1. **Add to your Gemini workspace:**
+
+```bash
+cp -r clink-standalone ~/.gemini/skills/clink-standalone
+```
+
+2. **Create a GEMINI.md instruction file:**
+
+```markdown
+# Clink CLI Bridge
+
+Use clink to delegate tasks to other AI assistants:
+
+## Available Commands
+
+- `python ~/.gemini/skills/clink-standalone/bin/clink.py codex "<prompt>"` - Use Codex for code analysis
+- `python ~/.gemini/skills/clink-standalone/bin/clink.py claude "<prompt>"` - Use Claude for general tasks
+
+## Roles
+
+Add `--role planner` for planning tasks, or `--role codereviewer` for code reviews.
+```
+
+3. **Usage in Gemini:**
+
+```
+> Use codex to analyze the codebase architecture
+> Run claude with planner role to design a migration strategy
+```
+
+---
+
+### Universal Setup Tips
+
+- **Environment Variables**: Ensure all CLI tools are in your `PATH`
+- **Authentication**: Run `gemini auth login` and authenticate other CLIs before use
+- **Config Customization**: Edit `config/*.json` to adjust timeouts, arguments, or add new CLIs
+- **Custom Roles**: Add new role prompts in `systemprompts/<cli>/<role>.txt`
+
 ## Supported CLIs
 
 | CLI | Install | Features |
@@ -94,6 +196,18 @@ Edit `config/*.json` to customize CLI commands, args, and timeouts.
 | codex | [Sourcegraph](https://docs.sourcegraph.com/codex) | Code analysis |
 | claude | [Anthropic](https://www.anthropic.com/claude-code) | General purpose |
 
-## License
+## Credits & License
 
-Extracted from zen-mcp-server.
+This project is extracted from [PAL MCP Server](https://github.com/BeehiveInnovations/pal-mcp-server) (formerly Zen MCP Server) by BeehiveInnovations.
+
+### Acknowledgments
+
+- [PAL MCP Server](https://github.com/BeehiveInnovations/pal-mcp-server) - The original multi-model AI collaboration framework
+- [MCP (Model Context Protocol)](https://modelcontextprotocol.com)
+- [Claude Code](https://claude.ai/code) by Anthropic
+- [Gemini CLI](https://ai.google.dev/) by Google
+- [Codex CLI](https://developers.openai.com/codex/cli) by OpenAI
+
+### License
+
+Apache 2.0 License - see the original [PAL MCP Server LICENSE](https://github.com/BeehiveInnovations/pal-mcp-server/blob/main/LICENSE) for details.
