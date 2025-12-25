@@ -1,5 +1,7 @@
 # Clink Standalone
 
+**[English](README.md)** | **[中文](README_CN.md)**
+
 Standalone CLI bridge for external AI CLIs (gemini, codex, claude) **without MCP server dependency**.
 
 ## What is Clink?

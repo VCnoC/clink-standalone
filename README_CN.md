@@ -1,5 +1,7 @@
 # Clink Standalone
 
+**[English](README.md)** | **[中文](README_CN.md)**
+
 独立运行的 CLI 桥接工具，用于调用外部 AI CLI（gemini、codex、claude），**无需 MCP 服务器依赖**。
 
 ## 什么是 Clink？
