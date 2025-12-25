@@ -1,0 +1,17 @@
+{
+  "name": "claude",
+  "command": "claude",
+  "additional_args": ["--print", "--output-format", "json", "--permission-mode", "acceptEdits"],
+  "timeout_seconds": 1800,
+  "roles": {
+    "default": {
+      "prompt_path": "systemprompts/claude/default.txt"
+    },
+    "planner": {
+      "prompt_path": "systemprompts/claude/planner.txt"
+    },
+    "codereviewer": {
+      "prompt_path": "systemprompts/claude/codereviewer.txt"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "codex",
+  "command": "codex",
+  "additional_args": ["exec", "--json", "--dangerously-bypass-approvals-and-sandbox", "--skip-git-repo-check"],
+  "timeout_seconds": 1800,
+  "roles": {
+    "default": {
+      "prompt_path": "systemprompts/codex/default.txt"
+    },
+    "planner": {
+      "prompt_path": "systemprompts/codex/planner.txt"
+    },
+    "codereviewer": {
+      "prompt_path": "systemprompts/codex/codereviewer.txt"
+    }
+  }
+}

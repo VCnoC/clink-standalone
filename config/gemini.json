@@ -1,0 +1,17 @@
+{
+  "name": "gemini",
+  "command": "gemini",
+  "additional_args": ["--telemetry", "false", "--yolo", "-o", "json"],
+  "timeout_seconds": 1800,
+  "roles": {
+    "default": {
+      "prompt_path": "systemprompts/gemini/default.txt"
+    },
+    "planner": {
+      "prompt_path": "systemprompts/gemini/planner.txt"
+    },
+    "codereviewer": {
+      "prompt_path": "systemprompts/gemini/codereviewer.txt"
+    }
+  }
+}
