@@ -1,7 +1,7 @@
 {
   "name": "gemini",
   "command": "gemini",
-  "additional_args": ["--telemetry", "false", "--yolo", "-o", "json"],
+  "additional_args": ["--yolo", "-o", "json"],
   "timeout_seconds": 1800,
   "roles": {
     "default": {

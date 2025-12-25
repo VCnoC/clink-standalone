@@ -32,7 +32,7 @@ DEFAULT_TIMEOUT_SECONDS = 1800  # 30 minutes
 INTERNAL_DEFAULTS: dict[str, dict] = {
     "gemini": {
         "command": "gemini",
-        "additional_args": ["--telemetry", "false", "--yolo", "-o", "json"],
+        "additional_args": ["--yolo", "-o", "json"],
         "timeout_seconds": DEFAULT_TIMEOUT_SECONDS,
         "parser": "gemini_json",
     },
